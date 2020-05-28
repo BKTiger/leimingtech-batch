@@ -5,6 +5,7 @@ import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
+import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.batch.repeat.RepeatStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -12,8 +13,9 @@ import org.springframework.stereotype.Component;
 
 /**
  * @author MrBird
+ * decider判断执行的demo
  */
-@Component
+//@Component
 public class DeciderJobDemo {
     @Autowired
     private JobBuilderFactory jobBuilderFactory;
@@ -25,6 +27,7 @@ public class DeciderJobDemo {
     @Bean
     public Job deciderJob() {
         return jobBuilderFactory.get("deciderJob")
+                .incrementer(new RunIdIncrementer())// 允许任务重复执行
                 .start(step1())
                 .next(myDecider)
                 .from(myDecider).on("weekend").to(step2())

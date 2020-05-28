@@ -68,11 +68,9 @@ public class ElasticSearchItemReader extends AbstractPaginatedDataItemReader imp
     public void setSortFileds(Map<String, String> sortFileds) {
         this.sortFileds = sortFileds;
     }
-
     @Override
     @SuppressWarnings("unchecked")
-    protected Iterator<Map> doPageRead() {
-        Integer pageStart = page * pageSize;
+    protected Iterator<Map> doPageRead() {                             Integer pageStart = page * pageSize;
         SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
         searchSourceBuilder
                 // 设置查询关键词

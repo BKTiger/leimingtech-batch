@@ -8,15 +8,15 @@ spring:
     one:
         datasource:
             driver-class-name: com.mysql.cj.jdbc.Driver
-            jdbc-url: jdbc:mysql://123.56.22.105:3306/batch_test?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false
-            username: root
-            password: kviuff
+            jdbc-url: jdbc:mysql://rm-2zepownltv36rkpasvo.mysql.rds.aliyuncs.com:3306/batch_test?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false
+            username: springbatch
+            password: springbatch
     two:
         datasource:
             driver-class-name: com.mysql.cj.jdbc.Driver
-            jdbc-url: jdbc:mysql://123.56.22.105:3306/batch_test_2?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false
-            username: root
-            password: kviuff
+            jdbc-url: jdbc:mysql://rm-2zepownltv36rkpasvo.mysql.rds.aliyuncs.com:3306/batch_test_2?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false
+            username: springbatch
+            password: springbatch
     data:
         mongodb:
             uri: mongodb://123.56.22.105:27017/test

@@ -5,6 +5,7 @@ import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.batch.core.launch.JobLauncher;
+import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.batch.core.repository.JobRepository;
 import org.springframework.batch.core.step.builder.JobStepBuilder;
 import org.springframework.batch.core.step.builder.StepBuilder;
@@ -16,8 +17,9 @@ import org.springframework.transaction.PlatformTransactionManager;
 
 /**
  * @author MrBird
+ * 任务转换为步骤的demo
  */
-@Component
+//@Component
 public class NestedJobDemo {
 
     @Autowired
@@ -35,6 +37,7 @@ public class NestedJobDemo {
     @Bean
     public Job parentJob() {
         return jobBuilderFactory.get("parentJob")
+                .incrementer(new RunIdIncrementer())// 允许任务重复执行
                 .start(childJobOneStep())
                 .next(childJobTwoStep())
                 .build();

@@ -6,6 +6,7 @@ import org.springframework.batch.core.configuration.annotation.JobBuilderFactory
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.batch.core.job.builder.FlowBuilder;
 import org.springframework.batch.core.job.flow.Flow;
+import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.batch.repeat.RepeatStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -14,8 +15,9 @@ import org.springframework.stereotype.Component;
 
 /**
  * @author MrBird
+ * 异步demo
  */
-@Component
+//@Component
 public class SplitJobDemo {
 
     @Autowired
@@ -26,6 +28,7 @@ public class SplitJobDemo {
     @Bean
     public Job splitJob() {
         return jobBuilderFactory.get("splitJob")
+                .incrementer(new RunIdIncrementer())// 允许任务重复执行
                 .start(flow1())
                 .split(new SimpleAsyncTaskExecutor()).add(flow2())
                 .end()

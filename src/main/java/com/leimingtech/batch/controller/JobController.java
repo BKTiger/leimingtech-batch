@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
+
 /**
  * @author zhangtai
  * @date 2020/5/11 13:56
@@ -18,13 +20,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class JobController {
 
-    @Autowired
+    @Resource(name = "mysqlToElasticSearchJob")
     private Job mysqlToElasticSearchJob;
 
-    @Autowired
+    @Resource(name = "mongoToMysqlJob")
     private Job mongoToMysqlJob;
 
-    @Autowired
+    @Resource(name = "elasticSearchToMongoJob")
     private Job elasticSearchToMongoJob;
 
     @Autowired

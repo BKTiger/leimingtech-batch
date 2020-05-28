@@ -86,13 +86,13 @@ public class MongoToMysqlDemo {
     @Bean
     public Step mongToMysqlStep(ItemReader<Goods> readFromMongo) throws Exception {
         return stepBuilderFactory.get("mongToMysqlStep")
-                .<Goods, Goods>chunk(10000) // 每批次处理的数据条数
+                .<Goods, Goods>chunk(1) // 每批次处理的数据条数
                 .reader(readFromMongo) // 读取数据
-                .listener(mongoToMysqlReadeListener) //读取数据的监听器
+                //.listener(mongoToMysqlReadeListener) //读取数据的监听器
                 .processor(mongoToMysqlProcess) //数据处理
-                .listener(mongoToMysqlProcessListener) // 数据处理的监听器
+                //.listener(mongoToMysqlProcessListener) // 数据处理的监听器
                 .writer(writer()) // 写入数据
-                .listener(mongoToMysqlWriterListener) // 写入数据的监听器
+                //.listener(mongoToMysqlWriterListener) // 写入数据的监听器
                 .faultTolerant() // 打开容错,这样才可以跳过异常
                 .skip(Exception.class) // 异常跳过,可以指定其他自定义异常类型
                 .skipLimit(3) //设置异常跳过次数限制
@@ -132,7 +132,7 @@ public class MongoToMysqlDemo {
                 .targetType(Goods.class)
                 .jsonQuery(jsonQuery)
                 .parameterValues(param)
-                .pageSize(20000)
+                .pageSize(1)
                 .collection("goods")
                 .sorts(Collections.singletonMap("created_at", Sort.Direction.ASC))
                 .template(mongoTemplate)

@@ -31,6 +31,7 @@ public class MongoToMysqlReadeListener implements ItemReadListener<Goods> {
 
     @Override
     public void onReadError(Exception ex) {
+
         log.info("发生异常:"+ex.getCause());
     }
 }

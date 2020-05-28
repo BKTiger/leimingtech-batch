@@ -21,12 +21,12 @@ public class MongoToMysqlProcessListener implements ItemProcessListener<Goods, G
 
     @Override
     public void beforeProcess(Goods item) {
-        //log.info("处理数据前:");
+        log.info("处理数据前:");
     }
 
     @Override
     public void afterProcess(Goods item, Goods result) {
-       // log.info("处理数据后:");
+        log.info("处理数据后:");
     }
 
     @Override

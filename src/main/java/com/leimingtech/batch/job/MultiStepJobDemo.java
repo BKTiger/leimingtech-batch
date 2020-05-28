@@ -13,8 +13,9 @@ import org.springframework.stereotype.Component;
 
 /**
  * @author MrBird
+ * 多步骤demo
  */
-@Component
+//@Component
 public class MultiStepJobDemo {
 
     @Autowired

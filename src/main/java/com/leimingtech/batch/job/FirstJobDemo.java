@@ -4,6 +4,7 @@ import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
+import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.batch.repeat.RepeatStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -11,8 +12,9 @@ import org.springframework.stereotype.Component;
 
 /**
  * @author MrBird
+ * 入门demo
  */
-@Component
+//@Component
 public class FirstJobDemo {
 
     @Autowired
@@ -22,7 +24,8 @@ public class FirstJobDemo {
 
     @Bean
     public Job firstJob() {
-        return jobBuilderFactory.get("firstJob")
+        return jobBuilderFactory.get("firstJob4")
+                .incrementer(new RunIdIncrementer())
                 .start(step())
                 .build();
     }
